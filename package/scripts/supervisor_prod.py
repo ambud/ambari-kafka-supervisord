@@ -98,6 +98,7 @@ class Supervisor(Script):
     if params.is_supported_kafka_ranger:
       setup_ranger_kafka() #Ranger Kafka Plugin related call
 
+    Execute(format("service supervisord start"))
     supervisord_service("broker", action="start")
 
   def stop(self, env, upgrade_type=None):
