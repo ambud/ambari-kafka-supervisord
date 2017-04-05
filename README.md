@@ -14,7 +14,7 @@ The stack override is also responsible to install Supervisord and deploy the Kaf
 
 1. Package the contents of the stack to a tarball ```tar czf stack.tgz metainfo.xml package```
 2. SCP the ```stack.tgz``` to your Ambari server
-3. Unpack the stack.tgz file using ```tar xvf stack.tgz```
+3. Unpack the stack.tgz file using ```mkdir output; tar xvf stack.tgz -C output```
 4. Now copy the contents of the folder to Ambari stacks ```sudo cp output/* /var/lib/ambari-server/resources/common-services/KAFKA/0.8.1/```
 5. Start Ambari server ```sudo ambari-server start```
 6. Start Ambari agents ```sudo service ambari-agent restart```
