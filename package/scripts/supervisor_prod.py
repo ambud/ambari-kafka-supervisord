@@ -19,6 +19,7 @@ limitations under the License.
 """
 
 import sys
+import os
 from kafka import kafka
 from kafka import ensure_base_directories
 from supervisord_service import supervisord_service, supervisord_check_status
@@ -53,8 +54,8 @@ class Supervisor(Script):
 
   def install(self, env):
     self.install_packages(env)
-    Execute(format("chkconfig supervisord on"))
-    Execute(format("cp ./supervisord.conf /etc/supervisord.conf"))
+    location = os.path.dirname(os.path.realpath(__file__));
+    Execute(format("cp "+location+"/supervisord.conf /etc/supervisord.conf"))
     Execute(format("chmod 600 /etc/supervisord.conf"))
     self.configure(env)
 
